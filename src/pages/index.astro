@@ -165,7 +165,7 @@ import Card from "../components/Card.astro";
               <div
                 class="w-50 p-2 border border-neutral-800 bg-neutral-900 rounded-lg mb-2"
               >
-                <div class="">
+                <div>
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
@@ -313,10 +313,7 @@ import Card from "../components/Card.astro";
               <table>
                 <tr class="h-16">
                   <td>
-                    <img
-                      src="assets/settlin.png"
-                      class="w-16 px-4 rounded-[10%]"
-                    />
+                    <img src="/settlin.png" class="w-16 px-4 rounded-[10%]" />
                   </td>
                   <td>
                     <div class="mb-2 mr-4">
@@ -331,7 +328,7 @@ import Card from "../components/Card.astro";
                 </tr>
                 <tr class="h-16">
                   <td>
-                    <img src="assets/ict.png" class="w-16 px-4 rounded-[10%]" />
+                    <img src="/ict.png" class="w-16 px-4 rounded-[10%]" />
                   </td>
                   <td>
                     <div class="mr-2">
@@ -524,16 +521,49 @@ import Card from "../components/Card.astro";
   </main>
 </Layout>
 
+<script>
+  function getDurationBetweenDates(startDate: Date) {
+    const start: Date = new Date(new Date(startDate).setHours(0, 0, 0, 0));
+    const end: Date = new Date();
+
+    const timeDifference: number = end.getTime() - start.getTime();
+
+    // Calculate the number of milliseconds in a year, month, and week
+    const millisecondsInYear = 365 * 24 * 60 * 60 * 1000;
+    const millisecondsInMonth = (365 / 12) * 24 * 60 * 60 * 1000;
+    const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000;
+
+    // Calculate the duration in years, months, weeks, and days
+    const years = Math.floor(timeDifference / millisecondsInYear);
+    const months = Math.floor(
+      (timeDifference % millisecondsInYear) / millisecondsInMonth
+    );
+    const weeks = Math.floor(
+      (timeDifference % millisecondsInMonth) / millisecondsInWeek
+    );
+    const days = Math.floor(
+      ((timeDifference % millisecondsInMonth) % millisecondsInWeek) /
+        (24 * 60 * 60 * 1000)
+    );
+
+    return `${years} ${years > 1 ? "years" : "year"} ${
+      months !== 0 ? months : ""
+    } ${months > 1 ? "months" : months === 0 ? "" : "month"} ${
+      weeks !== 0 ? weeks : ""
+    } ${weeks > 1 ? "weeks" : weeks === 0 ? "" : "week"} ${
+      days !== 0 ? days : ""
+    } ${days > 1 ? "days" : days === 0 ? "" : "day"}`;
+  }
+
+  const date = document.querySelector(".work-experience");
+
+  if (date) {
+    const result = getDurationBetweenDates(new Date("20 May 2022"));
+    date.innerHTML = result;
+  }
+</script>
+
 <style>
-  /*
-! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
-*/
-
-  /*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
-
   *,
   ::before,
   ::after {
@@ -551,15 +581,6 @@ import Card from "../components/Card.astro";
   ::after {
     --tw-content: "";
   }
-
-  /*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-*/
 
   html {
     line-height: 1.5;
@@ -597,13 +618,14 @@ import Card from "../components/Card.astro";
 1. Remove the margin in all browsers.
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
 */
-
+  main {
+    background-color: #121212;
+  }
   body {
     margin: 0;
     /* 1 */
     line-height: inherit;
     /* 2 */
-    background-color: #121212;
   }
 
   /*
