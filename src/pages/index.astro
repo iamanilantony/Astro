@@ -51,7 +51,8 @@ import Card from "../components/Card.astro";
             <p class="w-100 text-gray-400 text-xs md:text-sm">
               I'm a Full Stack Developer at
               <span
-                class="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded p-1 text-sm inline-flex items-center leading-4 text-neutral-900 dark:text-neutral-100 no-underline align-middle"
+                style="border: 1px solid #404040;"
+                class="border border-neutral-700 bg-neutral-800 rounded p-1 text-sm inline-flex items-center leading-4 text-neutral-100 no-underline align-middle"
               >
                 <span class="inline-block align-middle">
                   <img src="/settlin.png" class="w-4 rounded-[10%] mr-1" />
@@ -195,7 +196,7 @@ import Card from "../components/Card.astro";
                     Google sheets clone build on vanilla js
                   </p>
                   <button
-                    class="text-xs mt-2 bg-blue-500 text-slate-200 p-1 rounded-lg"
+                    class="text-xs mt-2 bg-blue-500 text-slate-200 p-1 rounded-lg border-0"
                   >
                     <a
                       target="_blank"
@@ -207,7 +208,7 @@ import Card from "../components/Card.astro";
                 </div>
               </div>
               <div
-                class="md:w-50 p-2 border border-neutral-800 bg-neutral-900 rounded-lg mb-2"
+                class="md:w-50 p-2 border border-neutral-800 bg-neutral-900 rounded-lg mb-2 bottom-0"
               >
                 <div class="blur-sm">
                   <svg
@@ -228,7 +229,7 @@ import Card from "../components/Card.astro";
                   <h5 class="font-semibold mb-1">CineFest</h5>
                   <p class="text-xs w-40">Online Film Festival Platform</p>
                   <button
-                    class="text-xs mt-2 bg-green-900 text-slate-200 p-1 rounded-lg"
+                    class="text-xs mt-2 bg-green-900 text-slate-200 p-1 rounded-lg border-0"
                   >
                     <a
                       target="_blank"
@@ -1295,7 +1296,13 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   }
 
   .border {
-    border-width: 1px;
+    /* border-width: 2px; */
+    border: 1px solid #404040;
+    /* background-color: magenta; */
+  }
+
+  .border-0 {
+    border: none;
   }
 
   .border-neutral-200 {
